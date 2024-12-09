@@ -424,7 +424,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return number.valueOf(number);
+  return number.valueOf();
 }
 
 /**
@@ -472,7 +472,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -611,7 +611,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return (Math.random() * (max - min) + min).toFixed(0);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 /**
@@ -625,7 +625,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.sqrt(a ** 2 + b ** 2);
+  return Math.hypot(a, b);
 }
 
 /**
@@ -643,13 +643,13 @@ function getHypotenuse(a, b) {
  */
 function getCountOfOddNumbers(number) {
   let n = 0;
-  if (number % 2 === 1) {
-    for (let i = 0; i < number; i += 1) {
-      if (i % 2 !== 0) {
-        n += 1;
-      }
+  const numberN = Math.abs(number);
+  for (let i = 1; i < numberN + 1; i += 2) {
+    if (i % 2 !== 0) {
+      n += 1;
     }
   }
+
   return n;
 }
 
