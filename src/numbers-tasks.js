@@ -240,7 +240,8 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   const answer = +value;
-  return Number.isNaN(answer) ? value : def;
+  const superAnswer = Number.isNaN(answer) ? def : answer;
+  return superAnswer;
 }
 
 /**
@@ -335,8 +336,7 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  const pow = Math.log2(num);
-  return 2 ** pow === num;
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -443,7 +443,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number.isNaN(number);
+  return Number.isFinite(number);
 }
 
 /**
@@ -519,7 +519,7 @@ function isSafeInteger(number) {
  * -5.1 => -6
  */
 function roundToSmallestInteger(number) {
-  return Math.ceil(number);
+  return Math.floor(number);
 }
 
 /**
@@ -533,7 +533,7 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  return Math.floor(number);
+  return Math.ceil(number);
 }
 
 /**
@@ -579,7 +579,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return (x1 + x2 + x3).toFixed(2);
 }
 
 /**
@@ -611,7 +611,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.random() * (max - min) + min;
+  return (Math.random() * (max - min) + min).toFixed(0);
 }
 
 /**
